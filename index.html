@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhan Sankar | Web App & Software Developer | Innovexa Techno</title>
+    <meta name="description"
+        content="Madhan Sankar — Web App & Software Developer and Founder of Innovexa Techno. Building modern digital solutions including web apps, software systems, and startup products.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>MS<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <a href="#contact" class="nav-cta">Hire Me</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-effects">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+
+                <h1 class="hero-title">
+                    <span class="title-line title-line-1">Madhan</span>
+                    <span class="title-line title-line-2">Sankar</span>
+                </h1>
+                <div class="hero-roles">
+                    <p class="hero-role">Web App & Software Developer</p>
+                    <p class="hero-founder">Founder of <span class="highlight">Innovexa Techno</span></p>
+                </div>
+                <p class="hero-tagline">Innovate &bull; Integrate &bull; Elevate</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Hire Me</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>Explore Work</span>
+                        <i class="fas fa-rocket"></i>
+                    </a>
+                    <a href="#" class="btn btn-outline">
+                        <span>Download CV</span>
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-glow"></div>
+                    <img src="hero_developer.png" alt="Madhan Sankar - Developer Workspace" class="hero-image"
+                        id="heroImage">
+                    <div class="floating-card floating-card-1">
+                        <i class="fas fa-code"></i>
+                        <span>Full Stack</span>
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <i class="fas fa-rocket"></i>
+                        <span>Startup Founder</span>
+                    </div>
+                    <div class="floating-card floating-card-3">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">About <span class="highlight">Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="about-card glass-card">
+                        <p class="about-text">I am <strong>Madhan Sankar</strong>, a web app and software developer and
+                            founder of <strong>Innovexa Techno</strong>. I build modern digital solutions including web
+                            applications, software systems, and startup products.</p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
+                                <span class="stat-label">Technologies</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-target="1">0</span>
+                                <span class="stat-label">Startup Founded</span>
+                            </div>
+                        </div>
+                        <div class="about-tags">
+                            <span class="tag">Web Apps</span>
+                            <span class="tag">Software Systems</span>
+                            <span class="tag">Startup Products</span>
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">AI Solutions</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="code-window glass-card">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="code-title">madhan.js</span>
+                        </div>
+                        <pre class="code-body"><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+  <span class="code-prop">name</span>: <span class="code-string">"Madhan Sankar"</span>,
+  <span class="code-prop">role</span>: <span class="code-string">"Full Stack Developer"</span>,
+  <span class="code-prop">company</span>: <span class="code-string">"Innovexa Techno"</span>,
+  <span class="code-prop">passion</span>: <span class="code-string">"Building the future"</span>,
+  <span class="code-prop">motto</span>: <span class="code-string">"Innovate • Integrate • Elevate"</span>
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">Tech <span class="highlight">Stack</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card glass-card" data-skill="HTML">
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <span class="skill-name">HTML</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="CSS">
+                    <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                    <span class="skill-name">CSS</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="JavaScript">
+                    <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="Flutter">
+                    <div class="skill-icon"><span class="custom-icon">💙</span></div>
+                    <span class="skill-name">Flutter</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="Firebase">
+                    <div class="skill-icon"><i class="fas fa-fire"></i></div>
+                    <span class="skill-name">Firebase</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="MongoDB">
+                    <div class="skill-icon"><i class="fas fa-leaf"></i></div>
+                    <span class="skill-name">MongoDB</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="Node.js">
+                    <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                    <span class="skill-name">Node.js</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="Java">
+                    <div class="skill-icon"><i class="fab fa-java"></i></div>
+                    <span class="skill-name">Java</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="Python">
+                    <div class="skill-icon"><i class="fab fa-python"></i></div>
+                    <span class="skill-name">Python</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="C">
+                    <div class="skill-icon"><span class="custom-icon">C</span></div>
+                    <span class="skill-name">C</span>
+                    <div class="skill-glow"></div>
+                </div>
+                <div class="skill-card glass-card" data-skill="C++">
+                    <div class="skill-icon"><span class="custom-icon">C++</span></div>
+                    <span class="skill-name">C++</span>
+                    <div class="skill-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-receipt project-icon-large"></i>
+                        </div>
+                        <div class="project-tech-stack">
+                            <span>Flutter</span><span>Firebase</span><span>Dart</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">QuickBill</h3>
+                        <p class="project-desc">Smart quick billing system for modern businesses.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass-card project-coming-soon">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-plus project-icon-large"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">More Coming Soon</h3>
+                        <p class="project-desc">Exciting projects in development at Innovexa Techno.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">My <span class="highlight">Services</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card glass-card">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Web Development</h3>
+                    <p>Responsive, modern websites built with cutting-edge technologies and best practices.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Web App Development</h3>
+                    <p>Scalable, high-performance web applications with dynamic user experiences.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Software Solutions</h3>
+                    <p>Custom software systems engineered for efficiency, reliability, and growth.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>UI/UX Design</h3>
+                    <p>Intuitive, visually stunning interfaces that delight users and drive engagement.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Startup Product Development</h3>
+                    <p>End-to-end product development from ideation to launch for startups.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info glass-card">
+                    <h3>Let's Build Something <span class="highlight">Amazing</span></h3>
+                    <p>Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@madhansankar.dev</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>India</span>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <a href="#" class="social-link-lg" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link-lg" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link-lg" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form glass-card" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <span class="form-highlight"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                        <span class="form-highlight"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                        <span class="form-highlight"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-bracket">&lt;</span>MS<span class="logo-bracket">/&gt;</span>
+                <p>Innovate &bull; Integrate &bull; Elevate</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Madhan Sankar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
