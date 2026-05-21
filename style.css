@@ -980,6 +980,116 @@ h3,
   transform: translateY(-3px);
 }
 
+/* ==========================================================================
+   SOCIAL MEDIA BRAND COLORS
+   ========================================================================== */
+
+/* Base transition overrides */
+.hero-social a,
+.footer-soc a {
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.hero-social a i,
+.footer-soc a i {
+  transition: color 0.4s ease, background 0.4s ease, -webkit-text-fill-color 0.4s ease;
+}
+
+/* 1. GITHUB */
+.hero-social a.github i,
+.footer-soc a.github i {
+  color: #24292f;
+}
+[data-theme="dark"] .hero-social a.github i,
+[data-theme="dark"] .footer-soc a.github i {
+  color: #ffffff;
+}
+
+/* GitHub Hover */
+.hero-social a.github:hover,
+.footer-soc a.github:hover {
+  background: #24292f;
+  border-color: #24292f;
+}
+[data-theme="dark"] .hero-social a.github:hover,
+[data-theme="dark"] .footer-soc a.github:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+.hero-social a.github:hover i,
+.footer-soc a.github:hover i {
+  color: #ffffff;
+}
+[data-theme="dark"] .hero-social a.github:hover i,
+[data-theme="dark"] .footer-soc a.github:hover i {
+  color: #020204;
+}
+.hero-social a.github:hover {
+  box-shadow: 0 0 20px rgba(36, 41, 47, 0.5);
+}
+[data-theme="dark"] .hero-social a.github:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* 2. LINKEDIN */
+.hero-social a.linkedin i,
+.footer-soc a.linkedin i {
+  color: #0077b5;
+}
+
+/* LinkedIn Hover */
+.hero-social a.linkedin:hover,
+.footer-soc a.linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+  box-shadow: 0 0 20px rgba(0, 119, 181, 0.5);
+}
+.hero-social a.linkedin:hover i,
+.footer-soc a.linkedin:hover i {
+  color: #ffffff;
+}
+
+/* 3. INSTAGRAM */
+.hero-social a.instagram i,
+.footer-soc a.instagram i {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Instagram Hover */
+.hero-social a.instagram:hover,
+.footer-soc a.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(225, 48, 108, 0.5);
+}
+.hero-social a.instagram:hover i,
+.footer-soc a.instagram:hover i {
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+  color: #ffffff;
+}
+
+/* 4. WHATSAPP */
+.hero-social a.whatsapp i,
+.footer-soc a.whatsapp i {
+  color: #25d366;
+}
+
+/* WhatsApp Hover */
+.hero-social a.whatsapp:hover,
+.footer-soc a.whatsapp:hover {
+  background: #25d366;
+  border-color: #25d366;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+}
+.hero-social a.whatsapp:hover i,
+.footer-soc a.whatsapp:hover i {
+  color: #ffffff;
+}
+
 /* RESPONSIVE */
 @media (max-width: 968px) {
   .nav-links {
