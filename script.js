@@ -385,10 +385,12 @@ function initGSAP() {
     // Hero Text Animations
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
     
+    gsap.set('.profile-photo-wrapper', { opacity: 0, x: -60, scale: 0.85 });
     gsap.set('.hero-name', { opacity: 0, y: 50 });
     gsap.set(['.hero-motto', '.hero-ctas', '.hero-social'], { opacity: 0, y: 30 });
     
-    tl.to('.hero-name', { opacity: 1, y: 0, duration: 1.2 }, 0.4)
+    tl.to('.profile-photo-wrapper', { opacity: 1, x: 0, scale: 1, duration: 1.2 }, 0.2)
+      .to('.hero-name', { opacity: 1, y: 0, duration: 1.2 }, 0.4)
       .to('.hero-motto', { opacity: 1, y: 0, duration: 0.8 }, 0.8)
       .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.8 }, 1)
       .to('.hero-social', { opacity: 1, y: 0, duration: 0.8 }, 1.2);
