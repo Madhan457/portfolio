@@ -278,13 +278,13 @@ async function fetchProjects() {
             const article = document.createElement('article');
             article.className = 'proj-card glass-card';
             
-            // Define PNG assets (filenames must exist in project root)
-            const pngFiles = ['bmi.png','button.png','calculator.png','currency.png','flames.png','weather.png','otp.png','password gen.png','qrcode gen.png'];
+            // Define image assets (png and jpeg) that exist in project root
+            const imageFiles = ['bmi.png','button.png','calculator.png','currency.png','flames.png','weather.png','otp.png','password gen.png','qrcode gen.png','barcode.jpeg'];
             function getImageForRepo(name) {
                 try {
                     const normalized = name.toLowerCase().replace(/\s+/g, '').replace(/-/g, '');
-                    for (const file of pngFiles) {
-                        const base = file.toLowerCase().replace(/\s+/g, '').replace(/-/g, '').replace('.png', '');
+                    for (const file of imageFiles) {
+                        const base = file.toLowerCase().replace(/\s+/g, '').replace(/-/g, '').replace(/\.(png|jpeg)$/, '');
                         if (normalized.includes(base) || base.includes(normalized)) {
                             return `./${file}`;
                         }
