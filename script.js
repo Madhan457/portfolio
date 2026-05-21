@@ -266,9 +266,11 @@ async function fetchProjects() {
         const response = await fetch('https://api.github.com/users/Madhan457/repos?sort=updated');
         if (!response.ok) throw new Error('Failed to fetch projects');
         const repos = await response.json();
+        console.log('Fetched repos count:', repos.length);
         
         // Filter out forks and portfolio itself
         const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== 'Madhan457');
+        console.log('Filtered repos count:', filteredRepos.length);
         
         projGrid.innerHTML = '';
         
@@ -276,6 +278,24 @@ async function fetchProjects() {
             const article = document.createElement('article');
             article.className = 'proj-card glass-card';
             
+            // Define PNG assets (filenames must exist in project root)
+            const pngFiles = ['bmi.png','button.png','calculator.png','currency.png','flames.png','weather.png','otp.png','password gen.png','qrcode gen.png'];
+            function getImageForRepo(name) {
+                try {
+                    const normalized = name.toLowerCase().replace(/\s+/g, '').replace(/-/g, '');
+                    for (const file of pngFiles) {
+                        const base = file.toLowerCase().replace(/\s+/g, '').replace(/-/g, '').replace('.png', '');
+                        if (normalized.includes(base) || base.includes(normalized)) {
+                            return `./${file}`;
+                        }
+                    }
+                } catch (e) {
+                    console.error('Image mapping error:', e);
+                }
+                return null;
+            }
+            const matchedImage = getImageForRepo(repo.name);
+            const imageUrl = matchedImage ? matchedImage : repo.owner.avatar_url;
             const language = repo.language || 'Code';
             let iconClass = 'fas fa-code';
             if (language === 'JavaScript') iconClass = 'fab fa-js-square';
@@ -285,6 +305,8 @@ async function fetchProjects() {
             else if (language === 'Java') iconClass = 'fab fa-java';
             else if (language === 'Dart') iconClass = 'fas fa-mobile-alt';
             else if (language === 'C++') iconClass = 'fas fa-cogs';
+            // Fallback placeholder image if PNG not found
+            const finalImageUrl = imageUrl || './placeholder.png';
 
             
             const topics = repo.topics && repo.topics.length > 0 
@@ -292,9 +314,10 @@ async function fetchProjects() {
                 : language;
 
             article.innerHTML = `
-                <div class="proj-img" style="background-image: url('${repo.owner.avatar_url}'); background-size: cover; background-position: center;">
-                    <div class="proj-ov"><span>View Project →</span></div>
-                </div>
+            <div class="proj-img">
+                <img src="${finalImageUrl}" alt="${repo.name}" class="proj-img-inner"/>
+                <div class="proj-ov"><span>View Project →</span></div>
+            </div>
                 <div class="proj-body">
                     <span class="proj-tag">${topics}</span>
                     <h3>${repo.name.replace(/-/g, ' ')}</h3>
