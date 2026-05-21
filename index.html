@@ -123,30 +123,8 @@
             <div class="wrap">
                 <div class="sec-label" data-anim="fade"><span>03</span> Projects</div>
                 <h2 class="sec-heading" data-anim="fade">Featured <span class="acc">Work</span></h2>
-                <div class="proj-grid" data-anim="stagger">
-                    <article class="proj-card glass-card">
-                        <div class="proj-img">
-                            <i class="fas fa-receipt"></i>
-                            <div class="proj-ov"><span>View Project &rarr;</span></div>
-                        </div>
-                        <div class="proj-body">
-                            <span class="proj-tag">SaaS &bull; Flutter &bull; Firebase</span>
-                            <h3>QuickBill</h3>
-                            <p>Smart quick billing system for modern businesses.</p>
-                        </div>
-                    </article>
-                    <!-- Additional project placeholders -->
-                    <article class="proj-card glass-card">
-                        <div class="proj-img">
-                            <i class="fas fa-rocket"></i>
-                            <div class="proj-ov"><span>View Project &rarr;</span></div>
-                        </div>
-                        <div class="proj-body">
-                            <span class="proj-tag">Startup &bull; Innovexa</span>
-                            <h3>Innovexa Hub</h3>
-                            <p>Centralized startup management dashboard.</p>
-                        </div>
-                    </article>
+                <div class="proj-grid" id="projGrid">
+                    <!-- GitHub Projects will be dynamically injected here -->
                 </div>
             </div>
         </section>
@@ -195,12 +173,14 @@
                             <a href="#"><i class="fas fa-map-marker-alt"></i> India</a>
                         </div>
                     </div>
-                    <form class="contact-form glass-card" id="contactForm" data-anim="fade">
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                    <form action="https://formsubmit.co/madhansankar2008s@gmail.com" method="POST" target="hidden_iframe" class="contact-form glass-card" id="contactForm" data-anim="fade">
+                        <input type="hidden" name="_captcha" value="false">
                         <div class="f-row">
-                            <div class="f-group"><label>Name</label><input type="text" placeholder="Your name" required></div>
-                            <div class="f-group"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+                            <div class="f-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+                            <div class="f-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
                         </div>
-                        <div class="f-group"><label>Message</label><textarea rows="5" placeholder="Tell me about your project..." required></textarea></div>
+                        <div class="f-group"><label>Message</label><textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea></div>
                         <button type="submit" class="btn btn-glow btn-full magnetic" data-strength="10"><span>Send Message</span><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>

@@ -114,12 +114,93 @@ function type() {
     }
 }
 
+// ===== FETCH GITHUB PROJECTS =====
+async function fetchProjects() {
+    const projGrid = document.querySelector('.proj-grid');
+    if (!projGrid) return;
+
+    try {
+        const response = await fetch('https://api.github.com/users/Madhan457/repos?sort=updated');
+        if (!response.ok) throw new Error('Failed to fetch projects');
+        const repos = await response.json();
+        
+        // Filter out forks and portfolio itself
+        const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== 'Madhan457');
+        
+        projGrid.innerHTML = '';
+        
+        filteredRepos.forEach(repo => {
+            const article = document.createElement('article');
+            article.className = 'proj-card glass-card';
+            
+            const language = repo.language || 'Code';
+            let iconClass = 'fas fa-code';
+            if (language === 'JavaScript') iconClass = 'fab fa-js-square';
+            else if (language === 'HTML') iconClass = 'fab fa-html5';
+            else if (language === 'CSS') iconClass = 'fab fa-css3-alt';
+            else if (language === 'Python') iconClass = 'fab fa-python';
+            else if (language === 'Java') iconClass = 'fab fa-java';
+            else if (language === 'Dart') iconClass = 'fas fa-mobile-alt';
+            else if (language === 'C++') iconClass = 'fas fa-cogs';
+
+            const topics = repo.topics && repo.topics.length > 0 
+                ? repo.topics.join(' &bull; ') 
+                : language;
+
+            article.innerHTML = `
+                <div class="proj-img">
+                    <i class="${iconClass}"></i>
+                    <div class="proj-ov"><span>View Project &rarr;</span></div>
+                </div>
+                <div class="proj-body">
+                    <span class="proj-tag">${topics}</span>
+                    <h3>${repo.name.replace(/-/g, ' ')}</h3>
+                    <p>${repo.description || 'A software development project by Madhan Sankar.'}</p>
+                </div>
+            `;
+            
+            article.addEventListener('click', () => {
+                window.open(repo.html_url, '_blank');
+            });
+            article.style.cursor = 'pointer';
+            
+            // Re-apply tilt effect
+            article.addEventListener('mousemove', e => {
+                if (window.innerWidth <= 968) return;
+                const r = article.getBoundingClientRect();
+                const x = ((e.clientX - r.left) / r.width - 0.5) * 15;
+                const y = ((e.clientY - r.top) / r.height - 0.5) * -15;
+                article.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${y}deg) translateY(-8px)`;
+            });
+            article.addEventListener('mouseleave', () => { 
+                article.style.transform = ''; 
+            });
+
+            projGrid.appendChild(article);
+        });
+
+        // Trigger GSAP animation for new elements
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.fromTo(projGrid.children, { opacity: 0, y: 30 }, {
+                opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
+                scrollTrigger: { trigger: projGrid, start: 'top 80%', once: true }
+            });
+            ScrollTrigger.refresh();
+        }
+
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        projGrid.innerHTML = '<p style="text-align:center;width:100%;">Failed to load projects. Please try again later.</p>';
+    }
+}
+
 // ===== INITIALIZE PORTFOLIO =====
 const mainPortfolio = document.getElementById('mainPortfolio');
 if (mainPortfolio) {
     mainPortfolio.classList.add('visible');
     // Initialize GSAP and typing immediately
     setTimeout(() => {
+        fetchProjects();
         initGSAP();
         type();
     }, 100);
@@ -159,20 +240,32 @@ function initGSAP() {
     });
 }
 
-// ===== FORM SUBMISSION =====
-document.getElementById('contactForm')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    const orig = btn.innerHTML;
-    btn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-    btn.style.background = '#00e676';
-    btn.style.color = '#000';
-    btn.style.borderColor = '#00e676';
-    setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.style.borderColor = '';
-        e.target.reset();
-    }, 3000);
-});
+// ===== FORM SUBMISSION NATIVE (HIDDEN IFRAME) =====
+const contactForm = document.getElementById('contactForm');
+const hiddenIframe = document.getElementById('hidden_iframe');
+
+if (contactForm && hiddenIframe) {
+    contactForm.addEventListener('submit', () => {
+        const btn = contactForm.querySelector('button');
+        const orig = btn.innerHTML;
+        
+        btn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+        
+        // When the hidden iframe finishes loading the FormSubmit response
+        hiddenIframe.onload = () => {
+            btn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
+            btn.style.background = '#00e676';
+            btn.style.color = '#000';
+            btn.style.borderColor = '#00e676';
+            
+            setTimeout(() => {
+                btn.innerHTML = orig;
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.borderColor = '';
+                contactForm.reset();
+            }, 3000);
+        };
+    });
+}
+
