@@ -395,13 +395,32 @@ h3,
 
 
 
+.theme-toggle {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
 .theme-toggle:hover {
   color: var(--accent);
   border-color: var(--accent);
 }
+.theme-toggle i {
+  color: var(--text-primary);
+}
 
 [data-theme="dark"] .dark-icon {
   display: none;
+}
+
+[data-theme="dark"] .light-icon {
+  color: #fff;
 }
 
 [data-theme="light"] .light-icon {
@@ -642,7 +661,22 @@ h3,
 .btn-outline {
   background: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  border: 1px solid #000; /* dark outline in light mode */
+}
+
+[data-theme="dark"] .btn-outline {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Hide the view project overlay completely */
+.proj-ov {
+  display: none;
+}
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .proj-body h3 {
@@ -919,6 +953,10 @@ h3,
 
 .proj-card {
   overflow: hidden;
+  cursor: auto;
+}
+
+.proj-card .btn {
   cursor: pointer;
 }
 
@@ -967,7 +1005,7 @@ h3,
 }
 
 .proj-card:hover .proj-ov {
-  opacity: 1;
+  opacity: 0;
 }
 
 .proj-ov span {
