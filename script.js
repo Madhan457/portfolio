@@ -363,7 +363,7 @@ async function fetchProjects() {
             article.className = 'proj-card glass-card';
 
             // Define image assets (png and jpeg) that exist in project root
-            const imageFiles = ['bmi.png', 'button.png', 'calculator.png', 'currency.png', 'flames.png', 'weather.png', 'otp.png', 'password gen.png', 'qrcode gen.png', 'barcode.jpeg'];
+            const imageFiles = ['bmi.png', 'button.png', 'calculator.png', 'currency.png', 'flames.png', 'weather.png', 'otp.png', 'password gen.png', 'qrcode gen.png', 'barcode.jpeg', 'portfolio.png'];
             function getImageForRepo(name) {
                 try {
                     const normalized = name.toLowerCase().replace(/\s+/g, '').replace(/-/g, '');
