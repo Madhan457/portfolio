@@ -313,18 +313,43 @@ async function fetchProjects() {
                 ? repo.topics.join(' &bull; ') 
                 : language;
 
+            // Determine demo URL based on repo name and exclusions
+            let demoUrl = null;
+            const excluded = /login|signin|otp|bmi|barcode/i;
+            if (!excluded.test(repo.name)) {
+                const demoMap = {
+                    'calculator': 'https://simple-calculator-liard-three.vercel.app',
+                    'glowbutton': 'https://css-glow-button.vercel.app',
+                    'flames': 'https://flames-ebon.vercel.app',
+                    'currencyconvertor': 'https://currency-convertor-kohl-omega.vercel.app',
+                    'qrcodegenerator': 'https://qr-code-generator-e4r7.vercel.app',
+                    'passwordgenerator': 'https://password-generator-eta-opal.vercel.app',
+                    'weather': 'https://weather-cyan-pi.vercel.app'
+                };
+                const norm = repo.name.toLowerCase().replace(/[-\s]/g, '');
+                for (const key in demoMap) {
+                    if (norm.includes(key)) { demoUrl = demoMap[key]; break; }
+                }
+            }
+
             article.innerHTML = `
-            <div class="proj-img">
-                <img src="${finalImageUrl}" alt="${repo.name}" class="proj-img-inner"/>
-                <div class="proj-ov"><span>View Project →</span></div>
-            </div>
+                <div class="proj-img">
+                    <img src="${finalImageUrl}" alt="${repo.name}" class="proj-img-inner"/>
+                    <div class="proj-ov"><span>View Project →</span></div>
+                </div>
                 <div class="proj-body">
                     <span class="proj-tag">${topics}</span>
                     <h3>${repo.name.replace(/-/g, ' ')}</h3>
                 </div>
+                <div class="proj-buttons">
+                    <a href="${repo.html_url}" target="_blank" class="btn btn-outline" style="margin-right:8px;">View Code</a>
+                    ${demoUrl ? `<a href="${demoUrl}" target="_blank" class="btn btn-glow">Live Demo</a>` : ''}
+                </div>
             `;
-            
-            article.addEventListener('click', () => {
+            // Preserve click to open repo (still useful for whole card)
+            article.addEventListener('click', (e) => {
+                // Prevent click when clicking on buttons
+                if (e.target.closest('a')) return;
                 window.open(repo.html_url, '_blank');
             });
             article.style.cursor = 'pointer';
