@@ -971,9 +971,22 @@ html {
   transform: scale(1.1);
 }
 
+/* Ensure icons visible in light mode */
+[data-theme="light"] .sk i.fab.fa-github,
+[data-theme="light"] .sk i.fas.fa-code-branch {
+  color: var(--text-primary) !important;
+}
+.sk:hover .sk-lang {
+  transform: scale(1.1);
+}
+
 .sk span {
   font-weight: 600;
   font-size: 0.9rem;
+}
+/* Light mode text for skill labels */
+[data-theme="light"] .sk span {
+  color: var(--text-primary) !important;
 }
 
 /* PROJECTS */
