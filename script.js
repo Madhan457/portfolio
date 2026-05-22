@@ -383,20 +383,37 @@ async function fetchProjects() {
                 }
             }
 
-            article.innerHTML = `
-                <div class="proj-img">
-                    <img src="${finalImageUrl}" alt="${repo.name}" class="proj-img-inner"/>
-                    <div class="proj-ov"><span>View Project →</span></div>
-                </div>
-                <div class="proj-body">
-                    <span class="proj-tag">${topics}</span>
-                    <h3>${repo.name.replace(/-/g, ' ')}</h3>
-                </div>
-                <div class="proj-buttons">
-                    <a href="${repo.html_url}" target="_blank" class="btn btn-outline" style="margin-right:8px;">View Code</a>
-                    ${demoUrl ? `<a href="${demoUrl}" target="_blank" class="btn btn-glow">Live Demo</a>` : ''}
-                </div>
-            `;
+                            article.innerHTML = `
+                    <div class="proj-img">
+                        <img src="${finalImageUrl}" alt="${repo.name}" class="proj-img-inner"/>
+                        <div class="proj-ov"><span>View Project →</span></div>
+                    </div>
+                    <div class="proj-body">
+                        <span class="proj-tag">${topics}</span>
+                        <h3>${repo.name.toLowerCase().includes('barcode') ? 'Quick Bill' : repo.name.replace(/-/g, ' ')}</h3>
+                        ${(() => {
+                            const name = repo.name.toLowerCase();
+                            if (name.includes('barcode')) return '<p class="proj-desc">Smart billing and barcode management system for fast and efficient business transactions.</p>';
+                            if (name.includes('otp') || name.includes('login') || name.includes('signup')) return '<p class="proj-desc">Authentication system with login, signup, and OTP verification using JavaScript.</p>';
+                            if (name.includes('weather')) return '<p class="proj-desc">Real-time weather forecasting app with API integration and dynamic UI.</p>';
+                            if (name.includes('bmi')) return '<p class="proj-desc">Simple BMI calculator measuring body mass index with instant health results.</p>';
+                            if (name.includes('password') && name.includes('generator')) return '<p class="proj-desc">Secure random password generator with customizable strength options.</p>';
+                            if (name.includes('glow') && name.includes('button')) return '<p class="proj-desc">Modern animated glowing button UI built with advanced CSS effects.</p>';
+                            if (name.includes('flames')) return '<p class="proj-desc">Fun relationship calculator app with interactive JavaScript logic and animations.</p>';
+                            if (name.includes('qr') && name.includes('code')) return '<p class="proj-desc">Generate QR codes instantly for links, text, and other data with responsive design.</p>';
+                            if (name.includes('calculator') && !name.includes('bmi')) return '<p class="proj-desc">Basic calculator for standard arithmetic operations.</p>';
+                            if (name.includes('currency')) return '<p class="proj-desc">Real-time currency conversion app with exchange rate API integration.</p>';
+                            if (name.includes('portfolio')) return '<p class="proj-desc">Personal futuristic portfolio showcasing projects, skills, and services.</p>';
+                            if (name.includes('edutech')) return '<p class="proj-desc">Educational platform UI focused on modern online learning and student interaction.</p>';
+                            return '';
+                        })()}
+
+                    </div>
+                    <div class="proj-buttons">
+                        <a href="${repo.html_url}" target="_blank" class="btn btn-outline" style="margin-right:8px;">View Code</a>
+                        ${demoUrl ? `<a href="${demoUrl}" target="_blank" class="btn btn-glow">Live Demo</a>` : ''}
+                    </div>
+                `;
             // Preserve click to open repo (still useful for whole card)
             article.addEventListener('click', (e) => {
                 // Prevent click when clicking on buttons
