@@ -330,6 +330,8 @@ h3,
   justify-content: space-between;
   padding: 0 clamp(2rem, 5vw, 4rem);
   transition: all 0.4s ease;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
 }
 
 .nav.scrolled {
@@ -407,10 +409,12 @@ h3,
   cursor: pointer;
   transition: background 0.3s, border-color 0.3s;
 }
+
 .theme-toggle:hover {
   color: var(--accent);
   border-color: var(--accent);
 }
+
 .theme-toggle i {
   color: var(--text-primary);
 }
@@ -436,6 +440,7 @@ h3,
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .nav-cta:hover {
@@ -645,6 +650,7 @@ h3,
   font-family: 'Inter', sans-serif;
   border: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-glow {
@@ -661,7 +667,8 @@ h3,
 .btn-outline {
   background: transparent;
   color: var(--text-primary);
-  border: 1px solid #000; /* dark outline in light mode */
+  border: 1px solid #000;
+  /* dark outline in light mode */
 }
 
 [data-theme="dark"] .btn-outline {
@@ -673,7 +680,7 @@ h3,
 .proj-ov {
   display: none;
 }
-}
+
 
 html {
   scroll-behavior: smooth;
@@ -864,7 +871,7 @@ html {
 .about-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -872,7 +879,7 @@ html {
   font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.2rem;
 }
 
 .about-stats {
@@ -880,6 +887,31 @@ html {
   flex-direction: column;
   gap: 1.5rem;
 }
+
+/* COUNTER CARDS */
+.counter-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--accent-glow);
+  margin-bottom: 1.5rem;
+}
+
+.counter-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.counter-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
 
 .stat-card {
   padding: 2rem;
@@ -1333,6 +1365,13 @@ html {
 }
 
 /* RESPONSIVE */
+.btn,
+.nav-cta,
+.theme-toggle,
+.proj-card .btn {
+  cursor: pointer !important;
+}
+
 @media (max-width: 968px) {
   .nav-links {
     display: none;
@@ -1374,16 +1413,10 @@ html {
     display: none;
   }
 
-  body,
-  a,
   .btn,
-  .theme-toggle,
-  input,
-  textarea,
-  .sk,
-  .proj-card,
-  .service-card {
-    cursor: auto;
+  .nav-cta,
+  .theme-toggle {
+    cursor: pointer;
   }
 }
 
