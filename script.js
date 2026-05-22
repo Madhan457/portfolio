@@ -314,7 +314,7 @@ async function fetchProjects() {
     if (!projGrid) return;
 
     try {
-        const response = await fetch('https://api.github.com/users/Madhan457/repos?sort=updated');
+        const response = await fetch(`https://api.github.com/users/Madhan457/repos?sort=updated&t=${Date.now()}`);
         if (!response.ok) throw new Error('Failed to fetch projects');
         const repos = await response.json();
         console.log('Fetched repos count:', repos.length);
@@ -322,6 +322,39 @@ async function fetchProjects() {
         // Filter out forks and portfolio itself
         const filteredRepos = repos.filter(repo => !repo.fork && repo.name !== 'Madhan457');
         console.log('Filtered repos count:', filteredRepos.length);
+
+        // Define custom order for projects
+        const projectOrder = [
+            'portfolio',
+            'flames',
+            'quickbill',
+            'calculator',
+            'weather',
+            'passwordgenerator',
+            'qrcodegenerator',
+            'login',
+            'signup',
+            'otp',
+            'glowbutton',
+            'currencyconvertor',
+            'bmi',
+            'edutech'
+        ];
+        const orderMap = new Map(projectOrder.map((name, idx) => [name, idx]));
+        // Helper to get order index; unknown projects get large index to preserve original order after known ones
+        const getOrder = (name) => {
+            const normalized = name.toLowerCase().replace(/\s+/g, '').replace(/-/g, '');
+            // Alias: treat 'barcode' as 'quickbill' for ordering
+            if (normalized.includes('barcode')) {
+                const qbIdx = orderMap.get('quickbill');
+                if (qbIdx !== undefined) return qbIdx;
+            }
+            for (const [key, idx] of orderMap.entries()) {
+                if (normalized.includes(key)) return idx;
+            }
+            return projectOrder.length + filteredRepos.findIndex(r => r.name === name);
+        };
+        filteredRepos.sort((a, b) => getOrder(a.name) - getOrder(b.name));
 
         projGrid.innerHTML = '';
 
