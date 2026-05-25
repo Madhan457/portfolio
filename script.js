@@ -244,7 +244,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ===== TYPING ANIMATION =====
-const phrases = ['Website Developer', 'Software Engineer', 'Mobile app developer'];
+const phrases = ['Website Developer', 'Software Developer', 'Mobile app developer'];
 const typingEl = document.getElementById('typingText');
 let pi = 0, ci = 0, deleting = false;
 
